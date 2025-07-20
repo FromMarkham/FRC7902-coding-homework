@@ -1,15 +1,30 @@
 import java.util.Scanner;
 
+/**
+ * This program simulates a simple virtual stand
+ * where users can buy fruits or beverages. They choose by entering their choice into the terminal. 
+ * If the user selects fruits, they can enter multiple items separated by spaces.
+ * The program then prints the price of each selected item.
+ * 
+ * This shows how to use basic input handling, control flow, string parsing, and conditionals in Java.
+ * 
+ * 
+ */
+
 public class FruitStand {
+
+    //Main class
+    
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Main menu
+        // Prompt the user to choose fruit or beverage
         System.out.println("Welcome to the Fruit & Drink Stand!");
         System.out.println("Would you like to buy fruit or a beverage?");
         System.out.print("Enter 'fruit' or 'beverage': ");
         String category = scanner.nextLine().toLowerCase();
 
+        //This switch statement directs the scanner input to 2 methods depending on what the user entered in the previous part 
         switch (category) {
             case "fruit":
                 handleFruitOrder(scanner);
