@@ -30,7 +30,7 @@ public class FruitStand {
             String fruitLine = scanner.nextLine().toLowerCase();
             String[] fruits = fruitLine.split(" ");
 
-            // Loop through each fruit and add price to total
+            // Loop through each fruit and add price to total and also print the prices and names of the fruits the user chose
             for (String fruit : fruits) {
                 switch (fruit) {
                     case "apple":
