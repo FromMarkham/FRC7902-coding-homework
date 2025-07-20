@@ -5,7 +5,8 @@ import java.util.Scanner;
  * either fruits (multiple items allowed) or only 1 beverage. 
  * Then it displays the total price of their order. 
  * It uses user inputs, string parsing, conditional logic, loops, and price calculations
- * 
+ * It also checks for any invalid inputs and displays error messages if the user does so. 
+ *
  *By: Bob Wang
  */
 public class FruitStand {
@@ -58,11 +59,14 @@ public class FruitStand {
                 }
             }
 
+        //If the user chose beverage    
         } else if (category.equals("beverage")) {
-            // Ask for a single beverage selection
+            
+            //Asks for a single beverage choice
             System.out.print("Enter your beverage (juice, water, soda): ");
             String beverage = scanner.nextLine().toLowerCase();
 
+            //Displays certain messages and calculates the price depending on which beverage the user chose. 
             switch (beverage) {
                 case "juice":
                     System.out.println("Juice - $2.50");
@@ -82,11 +86,11 @@ public class FruitStand {
             }
 
         } else {
-            // Handle invalid category
+            //Message it prints if the user didn't choose fruit or beverage, or entered incorrectly
             System.out.println("Invalid selection. Please choose 'fruit' or 'beverage'.");
         }
 
-        // Display the total price if any valid items were selected
+        // Display the total price if valid items were selected
         if (totalPrice > 0) {
             System.out.printf("Total: $%.2f%n", totalPrice);
         }
