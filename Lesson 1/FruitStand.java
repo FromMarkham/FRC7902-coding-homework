@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+
 /**
  * This is a virtual fruit stand where users can choose
  * either fruits (multiple items allowed) or only 1 beverage. 
@@ -11,47 +12,69 @@ import java.util.Scanner;
  */
 public class FruitStand {
 
-    //Main class 
+    //Main method
     public static void main(String[] args) {
-        
-        //Scanner input
         Scanner scanner = new Scanner(System.in);
-        double totalPrice = 0.0; // Keeps track of the total cost
+        double totalPrice = 0.0;
+
+        // Fruit prices variables
+        final double applePrice = 1.00;
+        final double bananaPrice = 0.75;
+        final double orangePrice = 0.80;
+        final double grapePrice = 2.00;
+        final double kiwiPrice = 1.50;
+
+        // Beverage prices variables
+        final double juicePrice = 2.50;
+        final double waterPrice = 1.00;
+        final double sodaPrice = 1.75;
+
+        // List of product prices to display on startup
+        System.out.println("Welcome to the Fruit Stand!");
+        System.out.println("Here is our price list:");
+        System.out.println("Fruits:");
+        System.out.printf(" - Apple: $%.2f%n", applePrice);
+        System.out.printf(" - Banana: $%.2f%n", bananaPrice);
+        System.out.printf(" - Orange: $%.2f%n", orangePrice);
+        System.out.printf(" - Grape: $%.2f%n", grapePrice);
+        System.out.printf(" - Kiwi: $%.2f%n", kiwiPrice);
+        System.out.println("Beverages:");
+        System.out.printf(" - Juice: $%.2f%n", juicePrice);
+        System.out.printf(" - Water: $%.2f%n", waterPrice);
+        System.out.printf(" - Soda: $%.2f%n", sodaPrice);
+        System.out.println();
 
         // Prompt user for fruit or beverage selection
-        System.out.print("Would you like fruit or a beverage? ");
+        System.out.print("Would you like fruits or beverages? ");
         String category = scanner.nextLine().toLowerCase();
 
-        //If the user chose fruit
-        if (category.equals("fruit")) {
-            
+        if (category.equals("fruits")) {
             // Ask the user for multiple fruit items
             System.out.print("Enter the fruits you want (separated by spaces): ");
-            String fruitLine = scanner.nextLine().toLowerCase();
-            String[] fruits = fruitLine.split(" ");
-
-            // Loop through each fruit and add price to total and also print the prices and names of the fruits the user chose
+            String[] fruits = scanner.nextLine().toLowerCase().split(" ");
+            
+           // Calculates the total price of their order if they ordered fruits, and also prints the prices along with the beverage fruits
             for (String fruit : fruits) {
                 switch (fruit) {
                     case "apple":
-                        System.out.println("Apple - $1.00");
-                        totalPrice += 1.00;
+                        System.out.printf("Apple - $%.2f%n", applePrice);
+                        totalPrice += applePrice;
                         break;
                     case "banana":
-                        System.out.println("Banana - $0.75");
-                        totalPrice += 0.75;
+                        System.out.printf("Banana - $%.2f%n", bananaPrice);
+                        totalPrice += bananaPrice;
                         break;
                     case "orange":
-                        System.out.println("Orange - $0.80");
-                        totalPrice += 0.80;
+                        System.out.printf("Orange - $%.2f%n", orangePrice);
+                        totalPrice += orangePrice;
                         break;
                     case "grape":
-                        System.out.println("Grape - $2.00");
-                        totalPrice += 2.00;
+                        System.out.printf("Grape - $%.2f%n", grapePrice);
+                        totalPrice += grapePrice;
                         break;
                     case "kiwi":
-                        System.out.println("Kiwi - $1.50");
-                        totalPrice += 1.50;
+                        System.out.printf("Kiwi - $%.2f%n", kiwiPrice);
+                        totalPrice += kiwiPrice;
                         break;
                     default:
                         System.out.println(fruit + " - Not available.");
@@ -59,43 +82,47 @@ public class FruitStand {
                 }
             }
 
-        //If the user chose beverage    
-        } else if (category.equals("beverage")) {
+        //If the user chose beverage
+        } else if (category.equals("beverages")) {
             
-            //Asks for a single beverage choice
-            System.out.print("Enter your beverage (juice, water, soda): ");
-            String beverage = scanner.nextLine().toLowerCase();
-
-            //Displays certain messages and calculates the price depending on which beverage the user chose. 
-            switch (beverage) {
-                case "juice":
-                    System.out.println("Juice - $2.50");
-                    totalPrice += 2.50;
-                    break;
-                case "water":
-                    System.out.println("Water - $1.00");
-                    totalPrice += 1.00;
-                    break;
-                case "soda":
-                    System.out.println("Soda - $1.75");
-                    totalPrice += 1.75;
-                    break;
-                default:
-                    System.out.println("Sorry, we don't have that beverage.");
-                    break;
+            //Ask the user what beverages they want
+            //Unlike previously, they can now select multiple beverages
+            System.out.print("Enter the beverages you want (separated by spaces): ");
+            String[] beverages = scanner.nextLine().toLowerCase().split(" ");
+            
+            //Calculates the total price of their order if they ordered beverages, and also prints the prices along with the beverage names
+            for (String beverage : beverages) {
+                switch (beverage) {
+                    case "juice":
+                        System.out.printf("Juice - $%.2f%n", juicePrice);
+                        totalPrice += juicePrice;
+                        break;
+                    case "water":
+                        System.out.printf("Water - $%.2f%n", waterPrice);
+                        totalPrice += waterPrice;
+                        break;
+                    case "soda":
+                        System.out.printf("Soda - $%.2f%n", sodaPrice);
+                        totalPrice += sodaPrice;
+                        break;
+                    default:
+                        System.out.println(beverage + " - Not available.");
+                        break;
+                }
             }
 
+       
         } else {
-            //Message it prints if the user didn't choose fruit or beverage, or entered incorrectly
-            System.out.println("Invalid selection. Please choose 'fruit' or 'beverage'.");
+        //Message it prints if the user didn't choose fruit or beverage, or entered incorrectly
+            System.out.println("Invalid selection. Please choose 'fruits' or 'beverages'.");
         }
 
-        // Display the total price if valid items were selected
+        // Display total if any valid items were added
         if (totalPrice > 0) {
             System.out.printf("Total: $%.2f%n", totalPrice);
         }
 
-        scanner.close(); // Close the Scanner 
+        scanner.close(); //Close the scanner
     }
 }
 
