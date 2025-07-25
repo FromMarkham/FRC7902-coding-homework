@@ -29,6 +29,7 @@ public class StringReducer {
                 // Message printed when the user gives an empty input. 
                 System.out.println("Error: " + e.getMessage());
                 }
+              
             } while (input.length() > 0);
             
             //closes the scanner 
