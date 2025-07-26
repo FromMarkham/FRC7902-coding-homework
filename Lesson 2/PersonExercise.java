@@ -1,7 +1,9 @@
 /*
 By: Bob Wang
 Date: July 26,2025 
-Description: this class is a class intended for objects representing people. It has attributes like name, age, monthly spending and net income, as well as methods like one that makes the person introduce themselves, another that makes the person eat, and walk. 
+Description: this class is a class intended for objects representing people. 
+It has attributes like name, age, monthly spending and net income, as well as methods 
+like one that makes the person introduce themselves, another that makes the person eat, and walk. 
 
 */
 
